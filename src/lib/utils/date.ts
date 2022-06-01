@@ -35,12 +35,16 @@ export function dateStringToLocal(dateStr: string, time = false): string {
     if (isNaN(date.getTime())) {
         throw new Error(`Invalid date: ${dateStr}`);
     }
+
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+    const fDate = `${year}-${month + 1}-${day}`;
+
     if (time) {
-        return (
-            date.toLocaleDateString(lang) + " " + date.toLocaleTimeString(lang)
-        );
+        return `${fDate} ${date.toLocaleTimeString(lang)}`;
     } else {
-        return date.toLocaleDateString(lang);
+        return fDate
     }
 }
 
