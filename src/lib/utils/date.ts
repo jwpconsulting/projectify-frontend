@@ -44,7 +44,7 @@ export function dateStringToLocal(dateStr: string, time = false): string {
     if (time) {
         return `${fDate} ${date.toLocaleTimeString(lang)}`;
     } else {
-        return fDate
+        return fDate;
     }
 }
 
