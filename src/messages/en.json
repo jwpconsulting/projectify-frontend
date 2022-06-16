@@ -152,5 +152,11 @@
     "collapse-section": "Collapse section",
     "switch-with-previous-section": "Switch with previous section",
     "switch-with-next-section": "Switch with next section",
-    "add-task": "Add Task"
+    "add-task": "Add Task",
+    "continue-to-dashboard": "Continue to Dashboard",
+    "log-in": "Log in",
+    "start-a-free-trial": "Start a free trial",
+    "product": "Product",
+    "resources": "Resources",
+    "pricing": "Pricing"
 }

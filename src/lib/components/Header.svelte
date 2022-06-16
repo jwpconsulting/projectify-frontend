@@ -17,15 +17,15 @@
         if (mode == "landing") {
             items = [
                 {
-                    label: "Product",
+                    label: $_("product"),
                     to: "/",
                 },
                 {
-                    label: "Resources",
+                    label: $_("resources"),
                     to: "/",
                 },
                 {
-                    label: "Pricing",
+                    label: $_("pricing"),
                     to: "/",
                 },
             ];
