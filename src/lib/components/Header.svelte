@@ -8,6 +8,7 @@
     import IconHamburgerMenu from "./icons/icon-hamburger-menu.svelte";
     import DrawerModal from "./drawerModal.svelte";
     import IconClose from "./icons/icon-close.svelte";
+    import HeaderButtons from "./header-buttons.svelte";
 
     export let mode = "app";
     let items;
@@ -16,16 +17,16 @@
         if (mode == "landing") {
             items = [
                 {
-                    label: "Problem",
-                    to: "/#problem",
+                    label: "Product",
+                    to: "/",
                 },
                 {
-                    label: "Solution",
-                    to: "/#solution",
+                    label: "Resources",
+                    to: "/",
                 },
                 {
-                    label: "Github",
-                    to: "/#github",
+                    label: "Pricing",
+                    to: "/",
                 },
             ];
         } else {
@@ -86,24 +87,7 @@
             </nav>
             <div class="grow" />
             <nav class="hidden gap-2 md:flex">
-                {#if userData}
-                    <a
-                        href="/dashboard"
-                        class="btn btn-primary rounded-full px-8 capitalize"
-                        >Continue to Dashboard</a
-                    >
-                {:else}
-                    <a
-                        href="/signin"
-                        class="btn btn-outline btn-primary rounded-full bg-base-100 px-8 capitalize"
-                        >Signin</a
-                    >
-                    <a
-                        href="/signup"
-                        class="btn btn-primary rounded-full px-8 capitalize"
-                        >Signup</a
-                    >
-                {/if}
+                <HeaderButtons {userData} />
             </nav>
 
             <button
@@ -149,24 +133,7 @@
             </nav>
             <div class="grow" />
             <nav class="flex flex-col gap-2">
-                {#if userData}
-                    <a
-                        href="/dashboard"
-                        class="btn btn-primary rounded-full px-8 capitalize"
-                        >Continue to Dashboard</a
-                    >
-                {:else}
-                    <a
-                        href="/signin"
-                        class="btn btn-outline btn-primary rounded-full bg-base-100 px-8 capitalize"
-                        >Signin</a
-                    >
-                    <a
-                        href="/signup"
-                        class="btn btn-primary rounded-full px-8 capitalize"
-                        >Signup</a
-                    >
-                {/if}
+                <HeaderButtons {userData} />
             </nav>
         </div>
     </DrawerModal>
