@@ -21,6 +21,7 @@
     import ProgressStepper from "$lib/figma/buttons/ProgressStepper.svelte";
     import HamburgerMenu from "$lib/figma/buttons/HamburgerMenu.svelte";
     import SearchMobile from "$lib/figma/buttons/SearchMobile.svelte";
+    import SearchButton from "$lib/figma/buttons/SearchButton.svelte";
     import BorderedIcon from "$lib/figma/buttons/BorderedIcon.svelte";
     import WorkspaceBoardIcon from "$lib/figma/buttons/WorkspaceBoardIcon.svelte";
     import SquovalIcon from "$lib/figma/buttons/SquovalIcon.svelte";
@@ -235,6 +236,11 @@ Mobile Menu
 </div>
 Mobile search menu
 <SearchMobile on:click={console.log} />
+
+Search Button
+
+<SearchButton />
+
 Side nav main
 <div class={fr}>
     {#each borderedIconTypes as type}
