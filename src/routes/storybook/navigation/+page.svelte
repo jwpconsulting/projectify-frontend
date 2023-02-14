@@ -5,6 +5,7 @@
     import type { AvatarVariantContent } from "$lib/figma/types";
     import { avatarStateSizes, avatarVariantSizes } from "$lib/figma/types";
     import Landing from "$lib/figma/navigation/Landing.svelte";
+    import LandingMobile from "$lib/figma/navigation/LandingMobile.svelte";
 
     const avatarV5Contents: AvatarVariantContent[] = [
         { kind: "assign", users: [user1, user2] },
@@ -52,4 +53,9 @@ Avatar V5
 Header Landing desktop
 <div>
     <Landing />
+</div>
+
+Header landing mobile
+<div>
+    <LandingMobile />
 </div>
