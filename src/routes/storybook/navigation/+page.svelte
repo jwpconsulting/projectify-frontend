@@ -9,6 +9,7 @@
     import Continue from "$lib/figma/navigation/Continue.svelte";
     import ContinueMobile from "$lib/figma/navigation/ContinueMobile.svelte";
     import Access from "$lib/figma/navigation/Access.svelte";
+    import AccessMobile from "$lib/figma/navigation/AccessMobile.svelte";
 
     const avatarV5Contents: AvatarVariantContent[] = [
         { kind: "assign", users: [user1, user2] },
@@ -76,4 +77,9 @@ Header continue mobile
 Header access page desktop
 <div>
     <Access />
+</div>
+
+Header access page mobile
+<div>
+    <AccessMobile />
 </div>
