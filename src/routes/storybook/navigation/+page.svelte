@@ -17,6 +17,7 @@
     import Search from "$lib/figma/navigation/Search.svelte";
     import SearchMobile from "$lib/figma/navigation/SearchMobile.svelte";
     import Dashboard from "$lib/figma/navigation/Dashboard.svelte";
+    import DashboardMobile from "$lib/figma/navigation/DashboardMobile.svelte";
 
     const avatarV5Contents: AvatarVariantContent[] = [
         { kind: "assign", users: [user1, user2] },
@@ -124,4 +125,9 @@ Header search mobile
 Header dashboard desktop
 <div>
     <Dashboard user={user1} />
+</div>
+
+Header dashboard mobile
+<div>
+    <DashboardMobile user={user1} />
 </div>
