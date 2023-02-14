@@ -62,6 +62,7 @@
     } from "$lib/storybook";
     import { browser } from "$app/environment";
     import { setFirstWorkspace } from "$lib/stores/dashboard";
+    import HeaderButton from "$lib/figma/buttons/HeaderButton.svelte";
 
     const onboardingSeats = [5, 10, 15, 20, 25];
     if (browser) {
@@ -106,6 +107,13 @@ Buttons
                 </div>
             {/each}
         </div>
+    {/each}
+</div>
+
+Header button
+<div class={fr}>
+    {#each falseTrue as open}
+        <HeaderButton label="Button" {open} />
     {/each}
 </div>
 
