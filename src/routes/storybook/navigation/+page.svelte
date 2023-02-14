@@ -8,6 +8,7 @@
     import LandingMobile from "$lib/figma/navigation/LandingMobile.svelte";
     import Continue from "$lib/figma/navigation/Continue.svelte";
     import ContinueMobile from "$lib/figma/navigation/ContinueMobile.svelte";
+    import Access from "$lib/figma/navigation/Access.svelte";
 
     const avatarV5Contents: AvatarVariantContent[] = [
         { kind: "assign", users: [user1, user2] },
@@ -70,4 +71,9 @@ Header continue to dashboard desktop
 Header continue mobile
 <div>
     <ContinueMobile />
+</div>
+
+Header access page desktop
+<div>
+    <Access />
 </div>
