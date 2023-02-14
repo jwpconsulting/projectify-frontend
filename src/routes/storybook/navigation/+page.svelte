@@ -6,6 +6,7 @@
     import { avatarStateSizes, avatarVariantSizes } from "$lib/figma/types";
     import Landing from "$lib/figma/navigation/Landing.svelte";
     import LandingMobile from "$lib/figma/navigation/LandingMobile.svelte";
+    import Continue from "$lib/figma/navigation/Continue.svelte";
 
     const avatarV5Contents: AvatarVariantContent[] = [
         { kind: "assign", users: [user1, user2] },
@@ -58,4 +59,9 @@ Header Landing desktop
 Header landing mobile
 <div>
     <LandingMobile />
+</div>
+
+Header continue to dashboard desktop
+<div>
+    <Continue />
 </div>
