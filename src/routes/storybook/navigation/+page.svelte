@@ -4,6 +4,7 @@
     import { fr, fc, users, user1, user2 } from "$lib/storybook";
     import type { AvatarVariantContent } from "$lib/figma/types";
     import { avatarStateSizes, avatarVariantSizes } from "$lib/figma/types";
+    import Landing from "$lib/figma/navigation/Landing.svelte";
 
     const avatarV5Contents: AvatarVariantContent[] = [
         { kind: "assign", users: [user1, user2] },
@@ -46,4 +47,9 @@ Avatar V5
             {/each}
         </div>
     {/each}
+</div>
+
+Header Landing desktop
+<div>
+    <Landing />
 </div>
