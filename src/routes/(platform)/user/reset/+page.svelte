@@ -1,6 +1,8 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
+
     import { goto } from "$lib/navigation";
+
     import IllustrationEmailSent from "$lib/components/illustrations/illustration-email-sent.svelte";
     import { requestPasswordReset } from "$lib/stores/user";
 
@@ -13,8 +15,8 @@
         requestSent = true;
     }
 
-    function gotoTopPage() {
-        goto("/");
+    async function gotoTopPage() {
+        await goto("/");
     }
 </script>
 
@@ -91,7 +93,7 @@
 
                 <div class="pt-2">
                     <button
-                        on:click={() => gotoTopPage()}
+                        on:click={gotoTopPage}
                         class="btn btn-primary mt-4 w-28 rounded-full"
                     >
                         {$_("top-page")}

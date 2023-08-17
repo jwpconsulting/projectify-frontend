@@ -1,16 +1,17 @@
 <script lang="ts">
-    import { Icon } from "@steeze-ui/svelte-icon";
     import { Search, X } from "@steeze-ui/heroicons";
+    import { Icon } from "@steeze-ui/svelte-icon";
+    import { formatISO, parseISO } from "date-fns";
+    import type { PikadayOptions } from "pikaday";
+    import type Pikaday from "pikaday";
+    import { onMount } from "svelte";
+
+    import { browser } from "$app/environment";
     import type {
         InputFieldAnchor,
         InputFieldStyle,
     } from "$lib/funabashi/types";
     import Anchor from "$lib/funabashi/typography/Anchor.svelte";
-    import { formatISO, parseISO } from "date-fns";
-    import type Pikaday from "pikaday";
-    import { browser } from "$app/environment";
-    import type { PikadayOptions } from "pikaday";
-    import { onMount } from "svelte";
 
     // TODO make border customizable (e.g. in TaskFormFields)
     export let value: string | undefined = undefined;
@@ -24,8 +25,8 @@
     export let readonly = false;
     export let onClick: (() => void) | undefined = undefined;
 
-    let pikadayAnchor: HTMLElement;
-    let pikaday: typeof Pikaday;
+    let pikadayAnchor: HTMLElement | undefined = undefined;
+    let pikaday: typeof Pikaday | undefined = undefined;
     let datePicker: Pikaday | undefined = undefined;
 
     onMount(async function () {

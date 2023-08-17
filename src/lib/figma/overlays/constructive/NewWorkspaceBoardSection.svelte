@@ -1,12 +1,13 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
+
+    import Button from "$lib/funabashi/buttons/Button.svelte";
+    import InputField from "$lib/funabashi/input-fields/InputField.svelte";
+    import { createWorkspaceBoardSection } from "$lib/repository/workspace";
     import type {
         CreateWorkspaceBoardSection,
         WorkspaceBoard,
     } from "$lib/types/workspace";
-    import Button from "$lib/funabashi/buttons/Button.svelte";
-    import InputField from "$lib/funabashi/input-fields/InputField.svelte";
-    import { createWorkspaceBoardSection } from "$lib/repository/workspace";
 
     export let workspaceBoard: WorkspaceBoard;
     export let close: () => void;
@@ -17,12 +18,15 @@
         close();
     }
 
-    function perform() {
+    async function perform() {
         const workspaceBoardSection: CreateWorkspaceBoardSection = {
             title: title,
             description: "",
         };
-        createWorkspaceBoardSection(workspaceBoard, workspaceBoardSection);
+        await createWorkspaceBoardSection(
+            workspaceBoard,
+            workspaceBoardSection
+        );
         close();
     }
 </script>

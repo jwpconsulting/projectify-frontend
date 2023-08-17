@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
     import { createEventDispatcher } from "svelte";
-    import type { SelectLabel } from "$lib/figma/types";
+    import { _ } from "svelte-i18n";
+
     import SelectLabelCheckBox from "$lib/figma/select-controls/SelectLabelCheckBox.svelte";
+    import type { SelectLabel } from "$lib/figma/types";
     import CircleIcon from "$lib/funabashi/buttons/CircleIcon.svelte";
-    import { openDestructiveOverlay } from "$lib/stores/globalUi";
     import { deleteLabel } from "$lib/repository/workspace";
+    import { openDestructiveOverlay } from "$lib/stores/globalUi";
 
     export let label: SelectLabel;
     export let checked: boolean;
@@ -70,7 +71,7 @@
                 {$_("filter-label.all")}
             {:else if label.kind === "noLabel"}
                 {$_("filter-label.none")}
-            {:else}
+            {:else if label.kind === "label"}
                 {label.label.name}
             {/if}
         </div>

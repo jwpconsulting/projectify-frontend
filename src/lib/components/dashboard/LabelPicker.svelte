@@ -1,11 +1,11 @@
 <script lang="ts">
     import { createEventDispatcher, onMount } from "svelte";
+
+    import LabelList from "$lib/components/dashboard/LabelList.svelte";
     import { client } from "$lib/graphql/client";
     import { Mutation_AssignLabel } from "$lib/graphql/operations";
     import { currentWorkspaceLabels } from "$lib/stores/dashboard";
     import type { Label, Task } from "$lib/types/workspace";
-
-    import LabelList from "$lib/components/dashboard/LabelList.svelte";
 
     let searchText = "";
     export let task: Task;
@@ -34,7 +34,7 @@
     }
 
     async function assignLabel(label: Label, assigned: boolean) {
-        if (!task?.uuid) {
+        if (!task.uuid) {
             return;
         }
 
@@ -54,11 +54,27 @@
         }
     }
 
-    let searchFieldEl: HTMLElement;
+    let searchFieldEl: HTMLElement | undefined = undefined;
     $: {
         if (searchFieldEl) {
             searchFieldEl.focus();
         }
+    }
+
+    async function addLabel({
+        detail: label,
+    }: {
+        detail: Label;
+    }): Promise<void> {
+        await assignLabel(label, true);
+    }
+
+    async function removeLabel({
+        detail: label,
+    }: {
+        detail: Label;
+    }): Promise<void> {
+        await assignLabel(label, false);
     }
 </script>
 
@@ -87,12 +103,8 @@
             bind:searchText
             bind:selectedLabels
             editable={true}
-            on:addLabel={({ detail }) => {
-                assignLabel(detail, true);
-            }}
-            on:removeLabel={({ detail }) => {
-                assignLabel(detail, false);
-            }}
+            on:addLabel={addLabel}
+            on:removeLabel={removeLabel}
         />
     </div>
 </div>

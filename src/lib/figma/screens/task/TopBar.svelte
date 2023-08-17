@@ -1,11 +1,13 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
 
+    import { getDashboardWorkspaceBoardSectionUrl } from "$lib/urls";
+
     import Button from "$lib/funabashi/buttons/Button.svelte";
     import CircleIcon from "$lib/funabashi/buttons/CircleIcon.svelte";
     import SquovalIcon from "$lib/funabashi/buttons/SquovalIcon.svelte";
     import { openContextMenu } from "$lib/stores/globalUi";
-
+    import type { CreateOrUpdateTaskModule } from "$lib/types/stores";
     import type {
         TaskOrNewTask,
         BreadCrumbTask,
@@ -15,8 +17,6 @@
         isBreadCrumbWorkspaceBoardSection,
         isBreadCrumbTask,
     } from "$lib/types/ui";
-    import { getDashboardWorkspaceBoardSectionUrl } from "$lib/urls";
-    import type { CreateOrUpdateTaskModule } from "$lib/types/stores";
 
     export let taskModule: CreateOrUpdateTaskModule | null;
     // TODO Can we pull this out of taskModule too? Justus 2023-05-08
@@ -37,7 +37,7 @@
                 throw new Error("Expected workspaceBoardSection");
             }
             if (!isBreadCrumbTask(task)) {
-                throw new Error(`Failed to crumble ${task}'s bread`);
+                throw new Error(`Failed to crumble task ${task.uuid}'s bread`);
             }
             breadCrumbTask = task;
             contextMenuType = {
@@ -52,7 +52,7 @@
             const { workspace_board_section } = newTask;
             if (!isBreadCrumbWorkspaceBoardSection(workspace_board_section)) {
                 throw new Error(
-                    `Failed to crumble ${workspace_board_section}'s bread`
+                    `Failed to crumble workspace board section ${workspace_board_section.uuid}'s bread`
                 );
             }
             breadCrumbTask = {

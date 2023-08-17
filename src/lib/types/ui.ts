@@ -1,4 +1,10 @@
 import type { SvelteComponentTyped } from "svelte";
+
+import type {
+    WorkspaceUserSearchModule,
+    LabelSearchModule,
+    MoveTaskModule,
+} from "$lib/types/stores";
 import type {
     Label,
     NewSubTask,
@@ -10,11 +16,6 @@ import type {
     WorkspaceBoardSection,
     WorkspaceUser,
 } from "$lib/types/workspace";
-import type {
-    WorkspaceUserSearchModule,
-    LabelSearchModule,
-    MoveTaskModule,
-} from "$lib/types/stores";
 
 export interface Input {
     name?: string;
@@ -97,7 +98,7 @@ export type DestructiveOverlayState = Overlay<
 
 export type ContextMenuType =
     | { kind: "profile" }
-    | { kind: "workspace" }
+    | { kind: "workspace"; workspaces: Workspace[] }
     | { kind: "sideNav"; workspace: Workspace }
     | { kind: "workspaceBoard"; workspaceBoard: WorkspaceBoard }
     | {

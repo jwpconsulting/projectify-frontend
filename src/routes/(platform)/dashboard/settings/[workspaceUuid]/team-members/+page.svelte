@@ -1,27 +1,30 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
     import Fuse from "fuse.js";
-    import type { WorkspaceUser } from "$lib/types/workspace";
+    import { _ } from "svelte-i18n";
 
-    import SearchInput from "$lib/components/search-input.svelte";
     import { fuseSearchThreshold } from "$lib/config";
+
     import DropdownButton from "$lib/components/dropdown-button.svelte";
-    import IconLockClosed from "$lib/components/icons/icon-lock-closed.svelte";
     import IconEdit from "$lib/components/icons/icon-edit.svelte";
+    import IconLockClosed from "$lib/components/icons/icon-lock-closed.svelte";
     import IconTrash from "$lib/components/icons/icon-trash.svelte";
+    import SearchInput from "$lib/components/search-input.svelte";
     import {
         currentCustomer,
         currentWorkspace,
         loading,
     } from "$lib/stores/dashboard";
+    import type { WorkspaceUser } from "$lib/types/workspace";
 
     let workspaceUsers: WorkspaceUser[] = [];
+
+    // TODO currentWorkspace shall instead be passing a by +page.ts
 
     $: {
         $loading = !($currentWorkspace && $currentCustomer);
     }
     $: {
-        if ($currentWorkspace && $currentWorkspace.workspace_users) {
+        if ($currentWorkspace?.workspace_users) {
             workspaceUsers = $currentWorkspace.workspace_users;
         }
     }
@@ -46,6 +49,7 @@
     }
     async function onRemoveUser(workspaceUser: WorkspaceUser) {
         console.error("TODO remove", workspaceUser);
+        await new Promise(console.error);
         // TODO if (!$currentWorkspace) {
         // TODO     return;
         // TODO }
@@ -62,6 +66,7 @@
 
     async function onEditUser(workspaceUser: WorkspaceUser) {
         console.error("TODO edit", workspaceUser);
+        await new Promise(console.error);
         // TODO if (!$currentWorkspace) {
         // TODO     return;
         // TODO }
@@ -84,7 +89,7 @@
     let filteredWorkspaceUsers: WorkspaceUser[];
 
     $: {
-        filteredWorkspaceUsers = workspaceUsers || [];
+        filteredWorkspaceUsers = workspaceUsers;
 
         if (roleFilter) {
             console.log(filteredWorkspaceUsers);

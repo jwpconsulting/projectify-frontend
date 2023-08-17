@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/svelte";
 
-import ContextMenu from "$lib/figma/overlays/ContextMenu.svelte";
-
-import type { ContextMenuType } from "$lib/types/ui";
 import {
     task,
     workspace,
@@ -13,12 +10,16 @@ import {
     moveTaskModule,
 } from "$lib/storybook";
 
+import ContextMenu from "$lib/figma/overlays/ContextMenu.svelte";
+import type { ContextMenuType } from "$lib/types/ui";
+
 const contextMenus: Record<string, ContextMenuType> = {
     profile: {
         kind: "profile" as const,
     },
     workspace: {
         kind: "workspace" as const,
+        workspaces: [workspace],
     },
     sideNav: {
         kind: "sideNav" as const,

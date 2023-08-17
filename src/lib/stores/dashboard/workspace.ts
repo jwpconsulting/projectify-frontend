@@ -1,10 +1,11 @@
 import { writable } from "svelte/store";
+
+import { getWorkspace, getWorkspaces } from "$lib/repository/workspace";
+import { currentWorkspaceBoard } from "$lib/stores/dashboard/workspaceBoard";
 import { createWsStore } from "$lib/stores/util";
 import type { Workspace, WorkspaceBoard } from "$lib/types/workspace";
-import { getWorkspace, getWorkspaces } from "$lib/repository/workspace";
 
-import { currentWorkspaceBoard } from "$lib/stores/dashboard/workspaceBoard";
-
+// TODO rename to currentWorkspaces
 export const workspaces = writable<Workspace[] | null>(null);
 
 export const currentWorkspaceUuid = writable<string | null>(null);

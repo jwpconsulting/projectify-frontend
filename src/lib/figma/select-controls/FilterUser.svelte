@@ -1,10 +1,11 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n";
     import { createEventDispatcher } from "svelte";
-    import type { WorkspaceUserSelectionInput } from "$lib/types/ui";
+    import { _ } from "svelte-i18n";
+
     import AvatarState from "$lib/figma/navigation/AvatarState.svelte";
     import AvatarVariant from "$lib/figma/navigation/AvatarVariant.svelte";
     import Checkbox from "$lib/funabashi/select-controls/Checkbox.svelte";
+    import type { WorkspaceUserSelectionInput } from "$lib/types/ui";
 
     export let workspaceUserSelectionInput: WorkspaceUserSelectionInput;
     export let active: boolean;
@@ -46,9 +47,9 @@
                     {$_("filter-workspace-user.assigned-nobody")}
                 {:else if workspaceUserSelectionInput.kind === "allWorkspaceUsers"}
                     {$_("filter-workspace-user.all-users")}
-                {:else}
+                {:else if workspaceUserSelectionInput.kind === "workspaceUser"}
                     {workspaceUserSelectionInput.workspaceUser.user
-                        .full_name ||
+                        .full_name ??
                         workspaceUserSelectionInput.workspaceUser.user.email}
                 {/if}
             </div>

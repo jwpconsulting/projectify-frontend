@@ -1,27 +1,15 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
 
-    $_("");
     import WorkspaceSettingsPage from "$lib/figma/screens/workspace-settings/WorkspaceSettingsPage.svelte";
-    import InputField from "$lib/funabashi/input-fields/InputField.svelte";
     import Button from "$lib/funabashi/buttons/Button.svelte";
+    import InputField from "$lib/funabashi/input-fields/InputField.svelte";
     import type { Workspace } from "$lib/types/workspace";
 
     export let workspace: Workspace;
 
-    let title: string;
-    let description: string;
-
-    function reset() {
-        title = workspace.title;
-        description = workspace.description || "";
-    }
-
-    $: {
-        if (workspace) {
-            reset();
-        }
-    }
+    let title: string = workspace.title;
+    let description: string | undefined = workspace.description;
 </script>
 
 <WorkspaceSettingsPage {workspace} activeSetting="index">

@@ -1,4 +1,6 @@
 <script lang="ts">
+    /* eslint-disable */
+    // TODO this file shall be deleted
     import lodash from "lodash";
     import { _ } from "svelte-i18n";
     import { tick } from "svelte";

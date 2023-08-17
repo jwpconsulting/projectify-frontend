@@ -1,24 +1,26 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import { confirmPasswordReset } from "$lib/stores/user";
+
     import { goto } from "$lib/navigation";
+
     import { page } from "$app/stores";
     import IllustrationPasswordResetComplete from "$lib/components/illustrations/illustration-password-reset-complete.svelte";
+    import { confirmPasswordReset } from "$lib/stores/user";
 
     let requestSent = false;
     let error: string | null = null;
     let passwordValue: string;
 
-    let email = $page.params["email"];
-    let token = $page.params["token"];
+    let email = $page.params.email;
+    let token = $page.params.token;
 
     async function submit() {
         await confirmPasswordReset(email, token, passwordValue);
         requestSent = true;
     }
 
-    function gotoTopPage() {
-        goto("/");
+    async function gotoTopPage() {
+        await goto("/");
     }
 </script>
 
@@ -93,7 +95,7 @@
 
                 <div class="pt-2">
                     <button
-                        on:click={() => gotoTopPage()}
+                        on:click={gotoTopPage}
                         class="btn btn-primary mt-4 w-28 rounded-full"
                     >
                         {$_("top-page")}

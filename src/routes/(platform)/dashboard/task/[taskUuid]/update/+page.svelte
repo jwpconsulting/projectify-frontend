@@ -1,30 +1,32 @@
 <script lang="ts">
     import type { Writable } from "svelte/store";
     import { readable, writable } from "svelte/store";
+
     import { goto } from "$lib/navigation";
+    import { getDashboardWorkspaceBoardSectionUrl } from "$lib/urls";
+
     import TaskUpdateCard from "$lib/figma/screens/task/TaskUpdateCard.svelte";
-    import type { Task } from "$lib/types/workspace";
-    import { createLabelSearchModule } from "$lib/stores/modules";
     import {
         assignLabelToTask,
         updateTask as performUpdateTask,
         assignUserToTask,
     } from "$lib/repository/workspace";
+    import {
+        currentWorkspaceUsers,
+        createWorkspaceUserSearchResults,
+    } from "$lib/stores/dashboard";
+    import { openContextMenu } from "$lib/stores/globalUi";
+    import { createLabelSearchModule } from "$lib/stores/modules";
+    import type {
+        WorkspaceUserSearchModule,
+        TaskModule,
+    } from "$lib/types/stores";
     import type {
         TasksPerUser,
         WorkspaceUserSelection,
         WorkspaceUserSelectionInput,
     } from "$lib/types/ui";
-    import type {
-        WorkspaceUserSearchModule,
-        TaskModule,
-    } from "$lib/types/stores";
-    import {
-        currentWorkspaceUsers,
-        createWorkspaceUserSearchResults,
-    } from "$lib/stores/dashboard";
-    import { getDashboardWorkspaceBoardSectionUrl } from "$lib/urls";
-    import { openContextMenu } from "$lib/stores/globalUi";
+    import type { Task } from "$lib/types/workspace";
 
     export let data: { task: Task };
     const { task } = data;
@@ -33,14 +35,11 @@
     let updateTask: Writable<Partial<Task>> = writable({});
 
     async function createOrUpdateTask() {
-        if (!task) {
-            throw new Error("Expected task");
-        }
         // TOOD add rest here
         const submitTask: Task = {
             ...task,
-            title: $updateTask.title || task.title,
-            description: $updateTask.description || task.description,
+            title: $updateTask.title ?? task.title,
+            description: $updateTask.description ?? task.description,
         };
         await performUpdateTask(submitTask);
         if (!task.workspace_board_section) {
@@ -78,9 +77,6 @@
               };
         const workspaceUserSearchModule: WorkspaceUserSearchModule = {
             select: async (selection: WorkspaceUserSelectionInput) => {
-                if (!task) {
-                    throw new Error("Expected $currentTask");
-                }
                 if (selection.kind === "unassigned") {
                     await assignUserToTask(null, task.uuid);
                 } else if (selection.kind === "allWorkspaceUsers") {
@@ -109,12 +105,8 @@
         };
         const labelSearchModule = createLabelSearchModule(
             task,
-            (labelUuid: string, selected: boolean) => {
-                if (!task) {
-                    // TODO make task non nullable here
-                    throw new Error("Expected task");
-                }
-                assignLabelToTask(task, labelUuid, selected);
+            async (labelUuid: string, selected: boolean) => {
+                await assignLabelToTask(task, labelUuid, selected);
             }
         );
         taskModule = {
@@ -151,6 +143,6 @@
     }
 </script>
 
-{#if task && taskModule}
+{#if taskModule}
     <TaskUpdateCard {task} {taskModule} />
 {/if}

@@ -1,13 +1,14 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
+
     import LabelPill from "$lib/components/dashboard/LabelPill.svelte";
-    import type { Label } from "$lib/types/workspace";
     import { currentWorkspace, loading } from "$lib/stores/dashboard";
+    import type { Label } from "$lib/types/workspace";
 
     let labels: Label[] = [];
 
     $: {
-        if ($currentWorkspace && $currentWorkspace.labels) {
+        if ($currentWorkspace?.labels) {
             labels = $currentWorkspace.labels;
             $loading = false;
         } else {
@@ -17,6 +18,7 @@
 
     async function onDeleteLabel(label: Label) {
         console.error("TODO delete", label);
+        await new Promise(console.error);
         // TODO let modalRes = await getModal("deleteLabel").open();
         // TODO if (!modalRes) {
         // TODO     return;
@@ -26,6 +28,7 @@
 
     async function onEditLabel(label: Label) {
         console.error("TODO edit", label);
+        await new Promise(console.error);
         // TODO let modalRes = await getModal("editLabel").open({ ...label });
         // TODO if (!modalRes) {
         // TODO     return;
@@ -38,6 +41,7 @@
     }
 
     async function onNewLabel() {
+        await new Promise(console.error);
         // TODO let modalRes = await getModal("newLabel").open();
         // TODO if (!modalRes) {
         // TODO     return;

@@ -1,19 +1,15 @@
 <script lang="ts">
     import type { PageData } from "./$types";
+
     import Dashboard from "$lib/components/dashboard/Dashboard.svelte";
     import SideNav from "$lib/figma/navigation/SideNav.svelte";
     import { createLabel as repositoryCreateLabel } from "$lib/repository/workspace";
-
-    import type {
-        LabelSearchModule,
-        WorkspaceUserSearchModule,
-    } from "$lib/types/stores";
-
     import {
         createLabelSearch,
         createLabelSearchResults,
         createTasksPerUser,
         currentWorkspace,
+        workspaces,
         currentWorkspaceLabels,
         currentWorkspaceBoard,
         currentWorkspaceBoardSections,
@@ -27,13 +23,17 @@
         workspaceUserSearchResults,
         sideNavOpen,
     } from "$lib/stores/dashboard";
+    import type {
+        LabelSearchModule,
+        WorkspaceUserSearchModule,
+    } from "$lib/types/stores";
 
     export let data: PageData;
 
     let { workspaceBoard, workspace } = data;
 
-    $: workspaceBoard = $currentWorkspaceBoard || workspaceBoard;
-    $: workspace = $currentWorkspace || workspace;
+    $: workspaceBoard = $currentWorkspaceBoard ?? workspaceBoard;
+    $: workspace = $currentWorkspace ?? workspace;
 
     let workspaceUserSearchModule: WorkspaceUserSearchModule;
     $: workspaceUserSearchModule = {
@@ -70,6 +70,7 @@
 <div class="flex grow flex-row">
     <SideNav
         open={$sideNavOpen}
+        workspaces={$workspaces ?? []}
         {workspace}
         {workspaceUserSearchModule}
         {labelSearchModule}

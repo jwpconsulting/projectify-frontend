@@ -1,4 +1,6 @@
 <script lang="ts">
+    /* eslint-disable */
+    // TODO this file shall be deleted
     import { _ } from "svelte-i18n";
     import LabelPicker from "$lib/components/dashboard/LabelPicker.svelte";
     import LabelList from "$lib/components/dashboard/LabelList.svelte";

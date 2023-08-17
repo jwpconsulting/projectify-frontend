@@ -1,16 +1,16 @@
 <script lang="ts">
     import { goto } from "$lib/navigation";
     import { getDashboardWorkspaceUrl } from "$lib/urls";
-    import { currentWorkspaceUuid } from "$lib/stores/dashboard";
 
     import IconArrowLeft from "$lib/components/icons/icon-arrow-left.svelte";
     import Loading from "$lib/components/loading.svelte";
+    import { currentWorkspaceUuid } from "$lib/stores/dashboard";
 
     export let title: string | null = null;
     export let loading = false;
-    export let onBack = () => {
+    export let onBack = async () => {
         if ($currentWorkspaceUuid) {
-            goto(getDashboardWorkspaceUrl($currentWorkspaceUuid));
+            await goto(getDashboardWorkspaceUrl($currentWorkspaceUuid));
         }
     };
 </script>
@@ -20,7 +20,7 @@
         <div class="flex items-center justify-start space-x-5">
             <button
                 class="btn btn-primary btn-circle shadow-md"
-                on:click={() => onBack()}
+                on:click={onBack}
             >
                 <div class="translate-x-1">
                     <IconArrowLeft />

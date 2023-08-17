@@ -1,4 +1,6 @@
 <script lang="ts">
+    /* eslint-disable */
+    // TODO this file shall be deleted
     import { _ } from "svelte-i18n";
     import { writable } from "svelte/store";
     import {
@@ -106,7 +108,7 @@
                 labels?: string[];
                 subTasks?: string[];
             } = {};
-            let assignee = task?.assignee?.user.email || null;
+            let assignee = task.assignee?.user.email || null;
 
             if (assignee) {
                 otherData.assignee = assignee;
@@ -188,7 +190,7 @@
             throw new Error("Expected task");
         }
         userPickerOpen = false;
-        if (user?.user.email == task?.assignee?.user.email) {
+        if (user?.user.email == task.assignee?.user.email) {
             task.assignee = undefined;
         } else if (user) {
             task.assignee = user;
@@ -236,7 +238,7 @@
                 on:click|preventDefault={() =>
                     (userPickerOpen = !userPickerOpen)}
             >
-                {#if task?.assignee}
+                {#if task.assignee}
                     TODO: A user profile picture may be shown here
                 {:else}
                     TODO: A profile picture may be shown here

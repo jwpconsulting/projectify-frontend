@@ -1,6 +1,7 @@
 import vars from "$lib/env";
-import { getSubscriptionFor } from "$lib/stores/wsSubscription";
+
 import type { WSSubscriptionStore } from "$lib/stores/wsSubscription";
+import { getSubscriptionFor } from "$lib/stores/wsSubscription";
 
 export const getSubscriptionForCollection = (
     collection: "workspace" | "workspace-board" | "task",

@@ -1,7 +1,8 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import type { Label } from "$lib/types/workspace";
+
     import LabelC from "$lib/figma/buttons/Label.svelte";
+    import type { Label } from "$lib/types/workspace";
 
     export let action: ((anchor: HTMLElement) => void) | undefined = undefined;
 
@@ -23,7 +24,7 @@
         <div bind:this={btnRef}>
             <LabelC
                 label={{ kind: "applyLabel" }}
-                action={action ? action.bind(null, btnRef) : undefined}
+                action={action.bind(null, btnRef)}
             />
         </div>
     {/if}

@@ -1,4 +1,6 @@
 <script lang="ts">
+    /* eslint-disable */
+    // TODO this file shall be deleted
     import { afterUpdate } from "svelte";
     import { client } from "$lib/graphql/client";
     import { Mutation_AddChatMessage } from "$lib/graphql/operations";
@@ -52,7 +54,7 @@
         bind:this={messagesView}
         class="flex grow flex-col divide-y divide-base-300 overflow-y-auto px-4"
     >
-        {#each task?.chat_messages || [] as message}
+        {#each task.chat_messages || [] as message}
             <div class="flex space-x-4 py-6">
                 <div class="shrink-0">
                     {#if message.author}

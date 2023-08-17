@@ -1,11 +1,13 @@
 <script lang="ts">
+    /* eslint-disable */
+    // TODO this file shall be deleted
     import type { Task } from "$lib/types/workspace";
 
     export let task: Task;
 
-    type PathLink = {
+    interface PathLink {
         label: string;
-    };
+    }
 
     let pathLinks: PathLink[];
     if (
