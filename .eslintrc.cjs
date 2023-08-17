@@ -20,6 +20,19 @@ module.exports = {
                 parser: "@typescript-eslint/parser",
             },
         },
+        {
+            files: ["*.ts"],
+            rules: {
+                // TODO find a way to apply me to svelte as well
+                // While ignoring export lets.
+                // This is useful because reactive code might refer to
+                // HTMLElements that are undefined? Is this true? Can
+                // reactive code blocks be run before a svelte component is
+                // mounted?
+                // Justus 2023-08-17
+                "@typescript-eslint/init-declarations": ["error", "always"],
+            },
+        },
     ],
     ignorePatterns: [
         "node_modules/*",
