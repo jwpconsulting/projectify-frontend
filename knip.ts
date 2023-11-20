@@ -1,7 +1,7 @@
 import type { KnipConfig } from "knip";
 
 const config: KnipConfig = {
-    ignore: ["**/*.d.ts"],
+    ignore: ["**/*.d.ts", "src/routes/storybook/**"],
     entry: [
         ".eslintrc.cjs",
         "postcss.config.cjs",
