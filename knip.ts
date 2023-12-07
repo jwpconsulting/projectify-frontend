@@ -1,9 +1,7 @@
 import type { KnipConfig } from "knip";
 
 const config: KnipConfig = {
-    // TODO completely disregard homebrew storybook pages
-    // ignore: ["**/*.d.ts", "src/routes/storybook/**"],
-    ignore: ["**/*.d.ts"],
+    ignore: ["**/*.d.ts", "src/stories/**"],
     entry: [
         ".eslintrc.cjs",
         "postcss.config.cjs",
