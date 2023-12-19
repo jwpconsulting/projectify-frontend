@@ -50,39 +50,35 @@
 </script>
 
 {#if open}
-    <div class="flex flex-col gap-2 px-4 pb-4">
-        <div class="flex flex-row items-center justify-between gap-4">
-            <div class="min-w-0 grow" bind:this={workspaceContextMenuAnchor}>
-                <button
-                    on:click={showWorkspaceContextMenu}
-                    class="flex w-full flex-row items-center justify-between gap-2 rounded-lg border border-border p-2 hover:bg-secondary-hover"
-                >
-                    <div class="flex min-w-0 flex-row items-center gap-2">
-                        <Icon
-                            src={Briefcase}
-                            theme="outline"
-                            class="h-4 w-4 shrink-0"
-                        />
-                        <div class="min-w-0 truncate text-sm font-bold">
-                            {workspace.title}
-                        </div>
-                    </div>
+    <div class="flex flex-row items-center justify-between gap-4">
+        <div class="min-w-0 grow" bind:this={workspaceContextMenuAnchor}>
+            <button
+                on:click={showWorkspaceContextMenu}
+                class="flex w-full flex-row items-center justify-between gap-2 rounded-lg border border-border p-2 hover:bg-secondary-hover"
+            >
+                <div class="flex min-w-0 flex-row items-center gap-2">
                     <Icon
-                        src={workspaceContextMenuOpen
-                            ? ChevronUp
-                            : ChevronDown}
+                        src={Briefcase}
                         theme="outline"
                         class="h-4 w-4 shrink-0"
                     />
-                </button>
-            </div>
-            <div bind:this={sideNavContextMenuAnchor}>
-                <CircleIcon
-                    icon="ellipsis"
-                    size="medium"
-                    action={{ kind: "button", action: showSideNavContextMenu }}
+                    <div class="min-w-0 truncate text-sm font-bold">
+                        {workspace.title}
+                    </div>
+                </div>
+                <Icon
+                    src={workspaceContextMenuOpen ? ChevronUp : ChevronDown}
+                    theme="outline"
+                    class="h-4 w-4 shrink-0"
                 />
-            </div>
+            </button>
+        </div>
+        <div bind:this={sideNavContextMenuAnchor}>
+            <CircleIcon
+                icon="ellipsis"
+                size="medium"
+                action={{ kind: "button", action: showSideNavContextMenu }}
+            />
         </div>
     </div>
 {:else}

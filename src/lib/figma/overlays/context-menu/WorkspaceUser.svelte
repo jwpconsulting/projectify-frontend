@@ -9,6 +9,6 @@
     export let workspaceUserAssignment: WorkspaceUserAssignment;
 </script>
 
-<Layout>
+<Layout class="px-4 py-4">
     <FilterWorkspaceUser mode={{ kind: "assign", workspaceUserAssignment }} />
 </Layout>

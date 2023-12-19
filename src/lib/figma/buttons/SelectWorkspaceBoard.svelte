@@ -39,7 +39,7 @@
 </script>
 
 <a
-    class="group block flex w-full flex-row justify-between px-4 py-1 hover:bg-base-200"
+    class="group block flex w-full flex-row justify-between px-1 py-0.5 hover:bg-background"
     href={getDashboardWorkspaceBoardUrl(workspaceBoard.uuid)}
     on:click={() =>
         selectWorkspaceBoardUuid(workspace.uuid, workspaceBoard.uuid)}

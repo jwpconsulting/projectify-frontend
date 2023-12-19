@@ -52,8 +52,7 @@
     }
 </script>
 
-<!-- TODO remove px/pt here -->
-<div class="flex flex-col px-4 pt-2">
+<div class="flex flex-col gap-2">
     <InputField
         bind:value={$workspaceUserSearch}
         style={{ inputType: "text" }}
@@ -68,33 +67,33 @@
             theme="outline"
         /></InputField
     >
-</div>
-<div class="flex flex-col">
-    <FilterUser
-        workspaceUserSelectionInput={{ kind: "unassigned" }}
-        active={$selected.kind === "unassigned"}
-        count={$tasksPerUser.unassigned}
-        onSelect={() => select({ kind: "unassigned" })}
-        onDeselect={() => deselect({ kind: "unassigned" })}
-    />
-    {#each $workspaceUserSearchResults as workspaceUser (workspaceUser.uuid)}
+    <div class="flex flex-col">
         <FilterUser
-            workspaceUserSelectionInput={{
-                kind: "workspaceUser",
-                workspaceUser: workspaceUser,
-            }}
-            active={isSelected($selected, workspaceUser)}
-            count={$tasksPerUser.assigned.get(workspaceUser.uuid)}
-            onSelect={() =>
-                select({
-                    kind: "workspaceUser",
-                    workspaceUser: workspaceUser,
-                })}
-            onDeselect={() =>
-                deselect({
-                    kind: "workspaceUser",
-                    workspaceUser: workspaceUser,
-                })}
+            workspaceUserSelectionInput={{ kind: "unassigned" }}
+            active={$selected.kind === "unassigned"}
+            count={$tasksPerUser.unassigned}
+            onSelect={() => select({ kind: "unassigned" })}
+            onDeselect={() => deselect({ kind: "unassigned" })}
         />
-    {/each}
+        {#each $workspaceUserSearchResults as workspaceUser (workspaceUser.uuid)}
+            <FilterUser
+                workspaceUserSelectionInput={{
+                    kind: "workspaceUser",
+                    workspaceUser: workspaceUser,
+                }}
+                active={isSelected($selected, workspaceUser)}
+                count={$tasksPerUser.assigned.get(workspaceUser.uuid)}
+                onSelect={() =>
+                    select({
+                        kind: "workspaceUser",
+                        workspaceUser: workspaceUser,
+                    })}
+                onDeselect={() =>
+                    deselect({
+                        kind: "workspaceUser",
+                        workspaceUser: workspaceUser,
+                    })}
+            />
+        {/each}
+    </div>
 </div>

@@ -6,6 +6,6 @@
     export let labelAssignment: LabelAssignment;
 </script>
 
-<Layout>
+<Layout class="px-4 py-3">
     <FilterLabelMenu mode={{ kind: "assign", labelAssignment }} />
 </Layout>

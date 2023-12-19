@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { ChevronDown, ChevronUp } from "@steeze-ui/heroicons";
     import { Icon } from "@steeze-ui/svelte-icon";
     import type { IconSource } from "@steeze-ui/svelte-icon/types";
     import { createEventDispatcher } from "svelte";
+
+    import CircleIcon from "$lib/funabashi/buttons/CircleIcon.svelte";
 
     export let label: string;
     export let icon: IconSource;
@@ -17,7 +18,7 @@
 
 <button
     on:click={click}
-    class="flex w-full flex-row items-center justify-between gap-2 px-4 py-2 text-utility hover:text-base-content"
+    class="flex w-full flex-row items-center justify-between gap-2 text-utility hover:text-base-content"
 >
     <div class="flex flex-row items-center gap-4">
         <div class="flex flex-row items-center gap-2">
@@ -28,9 +29,9 @@
             <div class="h-3 w-3 rounded-full bg-primary" />
         {/if}
     </div>
-    <Icon
-        src={open ? ChevronUp : ChevronDown}
-        theme="outline"
-        class="h-4 w-4"
+    <CircleIcon
+        icon={open ? "up" : "down"}
+        action={{ kind: "button", action: click }}
+        size="medium"
     />
 </button>

@@ -40,12 +40,12 @@
                 <SelectWorkspaceBoard {workspace} {workspaceBoard} />
             {/each}
         {/if}
+        <ContextMenuButton
+            label={$_("dashboard.create-board")}
+            icon={Plus}
+            color="primary"
+            state="normal"
+            kind={{ kind: "button", action: openCreateWorkspaceBoard }}
+        />
     </div>
-    <ContextMenuButton
-        label={$_("dashboard.create-board")}
-        icon={Plus}
-        color="primary"
-        state="normal"
-        kind={{ kind: "button", action: openCreateWorkspaceBoard }}
-    />
 {/if}

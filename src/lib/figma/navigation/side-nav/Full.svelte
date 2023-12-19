@@ -10,10 +10,9 @@
     export let workspace: Workspace;
 </script>
 
-<!-- XXX temporary fix to alleviate long side nav inside mobile menu -->
-<nav class="flex flex-col py-4">
+<nav class="flex flex-col gap-4 px-4 py-4">
     <WorkspaceSelector {workspaces} {workspace} open={true} />
-    <div class="flex shrink flex-col overflow-x-auto overflow-y-scroll">
+    <div class="flex shrink flex-col gap-3 overflow-x-auto overflow-y-scroll">
         <Boards {workspace} />
         {#if $showFilters}
             <FilterWorkspaceUsers />
