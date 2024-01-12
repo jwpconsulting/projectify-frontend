@@ -1403,6 +1403,7 @@ const messages: MessageDirectory = {
     },
     "navigation": {
         header: {
+            "development-preview": "Development preview",
             "logo": {
                 alt: "Projectify",
             },
@@ -1442,10 +1443,12 @@ const messages: MessageDirectory = {
                 },
             },
             epilogue: {
-                "copyright": "Copyright 2021-2023 JWP Consulting GK",
+                "copyright": "Copyright 2021-2024 JWP Consulting GK",
                 "free-software":
                     "The Projectify application is free software, and you are welcome to redistribute it under certain conditions;",
                 "details": "see here for details",
+                "build":
+                    "This version was built on {buildDate} from commit {commitHash} on branch {branchName} committed on {commitDate}.",
             },
         },
     },
